@@ -15,12 +15,12 @@ package swf.bridge {
 		public var currentLine : String;
 		
 		/**
-		 * Within the current line, this is the offset (distance) from the start of the line to the cursor.
+		 * Within the current line, this is the offset (distance) from the start of the file to the cursor.
 		 */
 		public var currentLineOffset : int;
 		
 		/**
-		 * Within the current line, this is the offset (distance) from the start of the line to the beginning of the selection.
+		 * Within the current line, this is the offset (distance) from the start of the file to the beginning of the selection.
 		 */
 		public var selectionOffset : int;
 		
