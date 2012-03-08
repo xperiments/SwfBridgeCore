@@ -9,14 +9,14 @@ package swf.bridge {
 	import flash.net.Socket;
 	import flash.utils.ByteArray;
 
-	/***
+	/**
 	 * The Workspace Requestor allows access to the workspace of Fdt 
 	 */
 	public final class FdtWorkspaceRequestor {
 		private var _bridge : AbstractFdtBridge;
 		private var _bridgeSocket : Socket;
 
-		/***
+		/**
 		 * This constructor may change in future, please use the accessors of the
 		 * bridge to get a requestor and do not use this constructor 
 		 */
@@ -25,7 +25,7 @@ package swf.bridge {
 			_bridgeSocket = bridge.bridgeSocket;
 		}
 
-		/***
+		/**
 		 * Move a resource from path to destination.
 		 * If the move is successful the request returns a <code>IFdtResource</code>
 		 * otherwise <code>null</code>
@@ -46,7 +46,7 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Deletes a resource from the workspace (no undo possible, please use with confirmation of the user).
 		 * If the resource could be deleted the request returns true otherwise <code>false</code>.
 		 *  
@@ -63,7 +63,7 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Creates a file in the workspace.
 		 * If the file could be created the request returns the new resource as <code>IFdtResource</code>, otherwise
 		 * <code>null</code>.
@@ -86,7 +86,7 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Creates a folder in the workspace.
 		 * If the folder could be created the request returns the new resource as <code>IFdtResource</code>, otherwise
 		 * <code>null</code>.
@@ -105,7 +105,7 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Reads the file content.
 		 * If the file could be read the request returns a <code>ByteArray</code> containing the 
 		 * files content up to a fourth of available memory, otherwise the byte array is empty. 
@@ -123,7 +123,7 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Reads the file resource.
 		 * If the file is found the request returns a <code>IFdtResource</code> describing the file, otherwise 
 		 * <code>null</code>.
@@ -141,7 +141,7 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Reads the container resource (directory, project).
 		 * If the container could be found the request returns a <code>IFdtResource</code> describing the container, otherwise 
 		 * <code>null</code>.
@@ -162,9 +162,8 @@ package swf.bridge {
 			});
 		}
 
-		/***
+		/**
 		 * Reads all project resources of the workspace
-		 * 
 		 *
 		 * The request returns a <code>Vector.&#60;IFdtResource&#62;</code> containing all workspace projects. 
 		 */
