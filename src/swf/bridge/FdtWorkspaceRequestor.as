@@ -165,7 +165,7 @@ package swf.bridge {
 		/***
 		 * Reads all project resources of the workspace
 		 * 
-		 * The request returns a <code>Vector.<IFdtResource></code> containing all workspace projects. 
+		 * The request returns a <code>Vector.&#60;IFdtResource&#62;</code> containing all workspace projects. 
 		 */
 		public function projects() : FdtRequest {
 			return new FdtRequest(function(thisObject : Object, a : Array, rt : Function) : void {
