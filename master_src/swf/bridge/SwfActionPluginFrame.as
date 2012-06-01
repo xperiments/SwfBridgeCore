@@ -78,7 +78,7 @@ package swf.bridge {
 				_systemManager = SystemManager(content);
 				_systemManager.addEventListener(FlexEvent.APPLICATION_COMPLETE, appReady);
 			} else {
-				trace("AExpect SwfActionPlugin but was: " + (typeof content));
+				trace("Expect SwfActionPlugin but was: " + (typeof content));
 				swfLoadFails(event);
 			}
 		}
@@ -91,7 +91,7 @@ package swf.bridge {
 				trace("Swf Action Plugin " + _id + " is loaded.");
 				_bridge.loadSuccess(this);
 			} else {
-				trace("BExpect SwfActionPlugin but was: " + (typeof content));
+				trace("Expect SwfActionPlugin but was: " + (typeof content));
 				swfLoadFails(event);
 			}
 		}

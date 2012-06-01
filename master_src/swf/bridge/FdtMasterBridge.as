@@ -1,6 +1,9 @@
-// Comment 
+// Comment
 package swf.bridge {
+	import mx.managers.SystemManager;
+
 	import flash.display.LoaderInfo;
+	import flash.net.Socket;
 
 	public class FdtMasterBridge extends AbstractFdtUiBridge {
 		private var actionPluginMap : Array = new Array();
@@ -11,9 +14,11 @@ package swf.bridge {
 		public function FdtMasterBridge(loaderInfo : LoaderInfo, swfMasterPlugin : SwfMasterPlugin) {
 			super(loaderInfo, swfMasterPlugin);
 			_swfMasterPlugin = swfMasterPlugin;
+			SystemManager;
 		}
 
 		override protected function readBaseMessage(messageID : int) : void {
+			// _swfMasterPlugin.handle(messageID);
 			switch(messageID) {
 				case 501:
 					loadSwfActionPlugin();
@@ -45,10 +50,10 @@ package swf.bridge {
 			var parts : Array = entryId.split("#");
 			var actionPlugionId : String = parts[0];
 			var loader : SwfActionPluginFrame = actionPluginMap[actionPlugionId];
-			trace("EntryId: "+entryId);
-			trace("API: "+actionPlugionId);
+			trace("EntryId: " + entryId);
+			trace("API: " + actionPlugionId);
 			if (loader != null) {
-				loader.swfActionPlugin.callEntryAction(entryId.substring(actionPlugionId.length+1));
+				loader.swfActionPlugin.callEntryAction(entryId.substring(actionPlugionId.length + 1));
 			}
 		}
 
@@ -109,6 +114,21 @@ package swf.bridge {
 			if (loader != null) {
 				loader.swfActionPlugin.dialogClosed(dialogInstanceId, result);
 			}
+		}
+
+		override protected function react(messageID : int) : void {
+			_swfMasterPlugin.handle(messageID);
+		}
+
+		override protected function colorSet(colors : Array) : void {
+			_swfMasterPlugin.setColors(colors);
+		}
+
+		public function click() : void {
+			sendStampedMessage(2100, this, function(_bridgeSocket : Socket) : void {
+				_bridgeSocket.readBoolean();
+			});
+			_bridgeSocket.flush();
 		}
 	}
 }

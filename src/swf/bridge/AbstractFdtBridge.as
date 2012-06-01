@@ -39,9 +39,9 @@ package swf.bridge {
 			_swfPlugin = swfPlugin;
 			_parameters = loaderInfo.parameters;
 			_instanceId = _parameters["Instance"];
-			trace("A:" + _instanceId);
-			trace("B:" + _parameters["SwfBridgeHost"]);
-			trace("C:" + _parameters["SwfBridgePort"]);
+			trace("Plugin id: " + _instanceId);			
+			trace("Host: " + _parameters["SwfBridgeHost"]);
+			trace("Use port: " + _parameters["SwfBridgePort"]);
 			_bridgeSocket = new Socket(_parameters["SwfBridgeHost"], _parameters["SwfBridgePort"]);
 			_bridgeSocket.addEventListener(Event.CLOSE, bridgeCloseHandler);
 			_bridgeSocket.addEventListener(Event.CONNECT, bridgeConnectHandler);
@@ -57,7 +57,7 @@ package swf.bridge {
 		private function bridgeSocketDataHandler(event : ProgressEvent) : void {
 			var len : uint = _bridgeSocket.bytesAvailable;
 			while (len > 0) {
-				trace(_messageID + "::" + _messageLen + " -- " + len + "  " + _bridgeSocket.bytesAvailable);
+				//trace(_messageID + "::" + _messageLen + " -- " + len + "  " + _bridgeSocket.bytesAvailable);
 				if (_messageID == -1) {
 					if (len >= 6) {
 						_messageLen = _bridgeSocket.readInt();
@@ -129,6 +129,7 @@ package swf.bridge {
 		}
 
 		private function readMessage(messageID : int) : void {
+			react(messageID);
 			if (messageID == 2) {
 				readStampedMessage();
 			}
@@ -137,6 +138,9 @@ package swf.bridge {
 			} else {
 				readExtendedMessage(messageID);
 			}
+		}
+
+		protected function react(messageID : int) : void {
 		}
 
 		private function readStampedMessage() : void {

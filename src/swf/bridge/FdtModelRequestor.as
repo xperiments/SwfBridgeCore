@@ -1256,17 +1256,17 @@ package swf.bridge {
 		private function readChildren() : Vector.<IFdtAstNode> {
 			var children : Vector.<IFdtAstNode> = new Vector.<IFdtAstNode>();
 			var id : int = _bridgeSocket.readShort();
-			trace("Start reading children");
+			//trace("Start reading children");
 			if (id != 254) {
 				trace("Unexpected node id:  " + id);
 				throw new Error("Unexpected node id:  " + id);
 			}
 			while ((id = _bridgeSocket.readShort()) != 255) {
-				trace(id);
+				//trace(id);
 				children.push(readNodeContent(id));
 			}
-			trace("End reading children");
-			trace(id);
+			//trace("End reading children");
+			//trace(id);
 			return children;
 		}
 		// private function readChildrenFilterEndNull() : Vector.<IFdtAstNode> {

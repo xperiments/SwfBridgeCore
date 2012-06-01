@@ -35,6 +35,14 @@ package swf.bridge {
 					var result : String = _bridgeSocket.readUTF();
 					dialogClosed(callerInstanceId, dialogInstanceId, result);
 					return;
+				case 2503:
+					var count : int = _bridgeSocket.readInt();
+					var colors : Array = new Array();
+					for (var i : int = 0;i < count;i++) {
+						colors.push(_bridgeSocket.readInt());
+					}
+					colorSet(colors);
+					return;
 				case 2525:
 					var entryId : String = _bridgeSocket.readUTF();
 					callEntryAction(entryId);
@@ -43,6 +51,10 @@ package swf.bridge {
 
 		/** @private **/
 		protected function callEntryAction(entryId : String) : void {
+		}
+
+		/** @private **/
+		protected function colorSet(colors : Array) : void {
 		}
 
 		/** @private **/
