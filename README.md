@@ -21,6 +21,6 @@ Learn more at the [FDT SWFBridge homepage](http://fdt.powerflasher.com/swf-bridg
 
 **SWFBridgeCore** is the source code for FDT's SWFBridge. It provides the best documentation of the API by showing how the API works. The FDT team will continue to document SWFBridge by adding comments to this source code.
 
-This is the source code that is used to generate the .SWC which ships with the FDT Plugin templates. If you wish to debug SWFBridge code, then attach the sources to the SWC API that is in the template. L
+This is the source code that is used to generate the .SWC which ships with the FDT Plugin templates. If you wish to debug SWFBridge code, then attach the sources to the SWC API that is in the template.
 
 [See how to attach source code to a SWC here](https://vimeo.com/26734420 "SWFBridge hompage")
